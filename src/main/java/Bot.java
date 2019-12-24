@@ -12,6 +12,7 @@ import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
@@ -26,15 +27,11 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-
     public void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
-
         sendMessage.setChatId(message.getChatId().toString());
-
       //  sendMessage.setReplyToMessageId(message.getMessageId());
-
         sendMessage.setText(text);
         try {
 
@@ -46,31 +43,38 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-
     public void onUpdateReceived(Update update) {
         Model model = new Model();
         Message message = update.getMessage();
+        HashMap<String,String>map = new HashMap<>();
 
         if (message != null && message.hasText()) {
             switch (message.getText()) {
-                case "/help":
+                case "Биржа":
+                    sendMsg(message, "показать котировки на бирже?");
+                    break;
+                case "help":
                     sendMsg(message, "Чем могу помочь?");
                     break;
-                case "/setting":
-                    sendMsg(message, "Что будем настраивать?");
-                    break;
+//                case "/setting":
+//                    sendMsg(message, "Что будем настраивать?");
+//                    break;
                 default:
                     try {
-                        sendMsg(message, Binance.getWeather(message.getText(), model));
+                        sendMsg(message, Binance.getBalance(message.getText(), model));
                     } catch (IOException e) {
-                        sendMsg(message, "Город не найден!");
+                        sendMsg(message, "Ты гонишь!");
                     }
 
                   }
             }
         }
-
-
+        void notification(){
+             Message message=new Message();
+             if (message != null && message.equals(133)) {
+                 sendMsg(message, "Пора покупать!");
+    }
+}
 
 
     public void setButtons(SendMessage sendMessage) {
@@ -83,8 +87,10 @@ public class Bot extends TelegramLongPollingBot {
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
 
-        keyboardFirstRow.add(new KeyboardButton("/help"));
-        keyboardFirstRow.add(new KeyboardButton("/setting"));
+        keyboardFirstRow.add(new KeyboardButton("BTCUSDC"));
+        keyboardFirstRow.add(new KeyboardButton("ETHUSDC"));
+        keyboardFirstRow.add(new KeyboardButton("help"));
+     //   keyboardFirstRow.add(new KeyboardButton("/setting"));
 
         keyboardRowList.add(keyboardFirstRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);

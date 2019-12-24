@@ -1,3 +1,5 @@
+import sun.plugin2.message.Message;
+
 public class Model {
 
     private String name;
