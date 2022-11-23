@@ -1,4 +1,4 @@
-import sun.plugin2.message.Message;
+//import sun.plugin2.message.Message;
 
 public class Model {
 
@@ -7,14 +7,41 @@ public class Model {
     private Double price;
     private String icon;
     private String main;
+    private int humidity;
+    private int temp;
+    private int wind;
+
+    public void setWind(int wind){
+        this.wind = wind;
+    }
+
+    public int getWind(){
+        return wind;
+    }
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public int
+    getHumidity() {
+        return humidity;
+    }
+
+    public void setTemp(int temp) {
+        this.temp = temp;
+    }
+
+    public int getTemp() {
+        return temp;
+    }
 
     public String getName() {
         return name;
     }
 
-//    public void setName(String name) {
-//        this.name ="Эфир";
-//    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getSymbol() {
         return symbol;

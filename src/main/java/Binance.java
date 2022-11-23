@@ -11,7 +11,7 @@ public class Binance {
 
     public static String getBalance(String message, Model model) throws IOException {
 
-       URL url =new URL("https://api.binance.com/api/v3/ticker/price?symbol=" + message);
+        URL url = new URL("https://api.binance.com/api/v3/ticker/price?symbol=" + message);
 
         Scanner in = new Scanner((InputStream) url.getContent());
         String result = "";
@@ -19,27 +19,10 @@ public class Binance {
             result += in.nextLine();
         }
 
-
         JSONObject object = new JSONObject(result);
         model.setSymbol(object.getString("symbol"));
         model.setPrice(object.getDouble("price"));
 
-        if(message.equals(100)){
-
-        }
-       // JSONArray getArray = object.getJSONArray("weather");
-//        for (int i = 0; i < getArray.length(); i++) {
-//            JSONObject obj = getArray.getJSONObject(i);
-//            model.setIcon((String) obj.get("icon"));
-//            model.setMain((String) obj.get("main"));
-      //  }
-
-        return
-                "Пара: " + model.getSymbol()  +
-                " Цена: " + model.getPrice();
-
-
-
-        }
+        return "Пара: " + model.getSymbol() + " Цена: " + model.getPrice() + " $";
     }
-
+}
