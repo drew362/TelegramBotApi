@@ -3,20 +3,12 @@ import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Bot extends TelegramLongPollingBot {
     private static String BOT_TOKEN = "";
@@ -56,7 +48,6 @@ public class Bot extends TelegramLongPollingBot {
 //        }
     }
 
-
     public void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
@@ -64,7 +55,8 @@ public class Bot extends TelegramLongPollingBot {
 //        sendMessage.setReplyToMessageId(message.getMessageId()); //ответ на сообщение по id
         sendMessage.setText(text);
         try {
-            setButtons(sendMessage);
+            sendMessage.setReplyMarkup(ReplyKeyboardMaker.getButtons());
+//            setButtons(sendMessage);
             sendMessage(sendMessage);
 
         } catch (TelegramApiException e) {
@@ -98,31 +90,18 @@ public class Bot extends TelegramLongPollingBot {
                     } catch (IOException e) {
                         sendMsg(message, "Ты гонишь!");
                     }
-
             }
         }
     }
-
-    public void setButtons(SendMessage sendMessage) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(true);
-
-        List<KeyboardRow> keyboardRowList = new ArrayList<>();           //список кнопок
-        KeyboardRow keyboardFirstRow = new KeyboardRow();                // первая строка клавиатуры
-
-        keyboardFirstRow.add(new KeyboardButton("BTCUSDC"));
-        keyboardFirstRow.add(new KeyboardButton("ETHUSDC"));
-        //   keyboardFirstRow.add(new KeyboardButton("/setting"));
-
-        KeyboardRow keyboardSecondRow = new KeyboardRow();          //вторая строка клавиатуры
-        keyboardSecondRow.add(new KeyboardButton("Чехов"));
-        keyboardSecondRow.add(new KeyboardButton("Встречи"));
-        keyboardRowList.add(keyboardFirstRow);
-        keyboardRowList.add(keyboardSecondRow);
-        replyKeyboardMarkup.setKeyboard(keyboardRowList);
-
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
