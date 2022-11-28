@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Bot extends TelegramLongPollingBot {
-    private static String BOT_TOKEN = "1017809460:AAFTUU-AG46O1JHfSn2-dwsNZQ1FMVJHcsg";
-    private static String BOT_NAME = "Finger_of_Buddhabot";
+    private static String BOT_TOKEN = "";
+    private static String BOT_NAME = "";
 
 //    private static final Map<String,String> getenv = System.getenv();
 
@@ -50,7 +50,6 @@ public class Bot extends TelegramLongPollingBot {
 
     public void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
-        SendMessage sendMessage1 = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(message.getChatId().toString());
 //        sendMessage.setReplyToMessageId(message.getMessageId()); //ответ на сообщение по id
