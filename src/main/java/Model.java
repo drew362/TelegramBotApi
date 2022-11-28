@@ -11,13 +11,14 @@ public class Model {
     private int temp;
     private int wind;
 
-    public void setWind(int wind){
+    public void setWind(int wind) {
         this.wind = wind;
     }
 
-    public int getWind(){
+    public int getWind() {
         return wind;
     }
+
     public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
@@ -72,6 +73,15 @@ public class Model {
     }
 
     public void setMain(String main) {
-        this.main = main;
+        switch (main) {
+            case "Clouds":
+                this.main = "Облачно";
+                break;
+            case "sun":
+                this.main = "Солнечно";
+                break;
+            default:
+                this.main = main;
+        }
     }
 }
