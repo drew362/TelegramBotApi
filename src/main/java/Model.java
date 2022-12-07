@@ -77,8 +77,8 @@ public class Model {
             case "Clouds":
                 this.main = "Облачно";
                 break;
-            case "sun":
-                this.main = "Солнечно";
+            case "Clear":
+                this.main = "Чистое небо";
                 break;
             default:
                 this.main = main;
