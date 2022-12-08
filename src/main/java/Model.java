@@ -80,6 +80,9 @@ public class Model {
             case "Clear":
                 this.main = "Чистое небо";
                 break;
+            case "Snow":
+                this.main = "Снежочек";
+                break;
             default:
                 this.main = main;
         }
