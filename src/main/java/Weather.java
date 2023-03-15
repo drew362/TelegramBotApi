@@ -1,5 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -24,6 +25,7 @@ public class Weather {
         JSONObject main = object.getJSONObject("main");
         model.setTemp(main.getInt("temp"));
         model.setHumidity(main.getInt("humidity"));
+//        model.setPressure(main.getDouble("pressure"));
 
 
         JSONArray getArray = object.getJSONArray("weather");
@@ -41,6 +43,7 @@ public class Weather {
                 "Температура: " + model.getTemp() + " °C" + "\n" +
                 "Влажность: " + model.getHumidity() + " %" + "\n" +
                 "Ветер: " + model.getWind() + " м/с" + "\n" +
+//                "Давление: " + model.getPressure() + " мм рт. ст." + "\n" +
                 "https://openweathermap.org/img/w/" + model.getIcon() + ".png" + "\n" +
                 model.getMain();
     }
