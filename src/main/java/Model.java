@@ -24,23 +24,18 @@ public class Model {
         this.humidity = humidity;
     }
 
-    public int
-    getHumidity() {
+    public int getHumidity() {
         return humidity;
     }
 
-//    public void setPressure(Double pressure){
-//        this.pressure = pressure;
-//    }
-////    @Override
-////    public double getPressure(){
-////        return pressure/1.333;
-////    }
-//    public Double getPressure(){
-//        return pressure/1.333;
-//    }
+    public void setPressure(Double pressure) {
+        this.pressure = pressure;
+    }
 
-
+    public int getPressure() {
+        int result = (int) (pressure / 1.333);
+        return result;
+    }
 
     public void setTemp(int temp) {
         this.temp = temp;
