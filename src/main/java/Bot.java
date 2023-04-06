@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Bot extends TelegramLongPollingBot {
-    private static String BOT_TOKEN = "Хуй тебе";
+    private static String BOT_TOKEN = "1017809460:AAE4PO3os7ht_AraJ7J8MvYW6UTRMzl--3w";
     private static String BOT_NAME = "Finger_of_Buddhabot";
 
 //    private static final Map<String,String> getenv = System.getenv();

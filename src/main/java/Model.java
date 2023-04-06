@@ -10,6 +10,15 @@ public class Model {
     private int humidity;
     private int temp;
     private int wind;
+    private int pressure;
+
+    public Double getPressure(){
+        return pressure*0.75;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
 
     public void setWind(int wind) {
         this.wind = wind;
