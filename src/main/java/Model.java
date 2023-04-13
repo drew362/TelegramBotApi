@@ -12,8 +12,8 @@ public class Model {
     private int wind;
     private int pressure;
 
-    public Double getPressure(){
-        return pressure*0.75;
+    public int getPressure(){
+        return (int) (pressure*0.75);
     }
 
     public void setPressure(int pressure) {

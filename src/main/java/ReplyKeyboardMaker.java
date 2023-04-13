@@ -16,6 +16,7 @@ public class ReplyKeyboardMaker {
 
         KeyboardRow keyboardSecondRow = new KeyboardRow();          //вторая строка клавиатуры
         keyboardSecondRow.add(new KeyboardButton("Чехов"));
+        keyboardSecondRow.add(new KeyboardButton("Нахабино"));
         keyboardSecondRow.add(new KeyboardButton("Встречи"));
         keyboardRowList.add(keyboardFirstRow);
         keyboardRowList.add(keyboardSecondRow);
